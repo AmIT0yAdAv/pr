@@ -3,6 +3,11 @@ from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()  # Load .env file
+
 
 
 router = APIRouter()
@@ -10,6 +15,7 @@ router = APIRouter()
 # Connect to MySQL
 DATABASE_URL = os.getenv("DATABASE_URL")
 
+print("DATABASE_URL:", DATABASE_URL)
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
